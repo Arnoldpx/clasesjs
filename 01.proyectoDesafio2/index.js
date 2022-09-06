@@ -1,4 +1,3 @@
-
 class Clientes{
     constructor(nombre,monto,plazo,valorCuotas, total){
         this.nombre = nombre;
@@ -24,6 +23,7 @@ function cotizador(nombre,monto,plazo){
     let total = valorCuotas + interes;
 
     const tasa = [0.60 , 0.80 , 0.100 , 0.120]
+
     if(plazo==12){
         interes  =monto * tasa[0] / plazo
     }else if(plazo==24){
@@ -44,7 +44,6 @@ function cotizador(nombre,monto,plazo){
     console.log(newPersona)
      
         let validacion= prompt('Desea realizar la operacion? SI/NO');
-
     if(validacion.toUpperCase() == 'SI' || validacion.toUpperCase() == 'NO'){
         alert('su operacion se realizo con exito.')
         
@@ -59,4 +58,4 @@ agrega()
    console.log(personas);
    }
     
-    
+
