@@ -10,13 +10,33 @@ class Clientes{
 }
 const personas = [];
 
-cotizador (
-    prompt('Ingrese su nombra'),
-    parseInt(prompt('ingrese el monto solicitado')),
-    parseInt(prompt('Ingrese la cantidad de coutas, 12 . 24 . 48 .72'))
+let option = 0;
+do {
+  option = parseInt(
+    prompt(
+      "Ingrese 1 para agregar,3 para ver un usuario, 5 para ver filtrados, 6 para salir"
     )
+  );
+  switch (option) {
+    case 1:
+     cotizador(personas);
+      break;
+    case 3:
+     verTodosLosClientes(personas);
+      break;
+    case 5:
+     verClientesFiltrados(personas)
+      break;
+    default:
+      break;
+  }
+} while (option != 6);
 
-function cotizador(nombre,monto,plazo){ 
+
+function cotizador(personas){ 
+    let nombre = prompt('Ingrese su nombra')
+    let monto = parseInt(prompt('ingrese el monto solicitado'))
+    let plazo = parseInt(prompt('Ingrese la cantidad de coutas, 12 . 24 . 48 .72'))
 
     let valorCuotas = monto / plazo;
     let interes;
@@ -40,9 +60,10 @@ function cotizador(nombre,monto,plazo){
     console.log('La cantidad de coutas en devolver es de', plazo);
     console.log('su cuota pura es', valorCuotas );
     console.log('el total de intereses es ' , valorCuotas + interes);
-      newPersona = new Clientes(nombre,monto,plazo,valorCuotas,total )  
-    console.log(newPersona)
+      let newPersona = new Clientes(nombre,monto,plazo,valorCuotas,total ) 
+     personas.push(newPersona);
      
+    
         let validacion= prompt('Desea realizar la operacion? SI/NO');
     if(validacion.toUpperCase() == 'SI' || validacion.toUpperCase() == 'NO'){
         alert('su operacion se realizo con exito.')
@@ -50,12 +71,14 @@ function cotizador(nombre,monto,plazo){
     }else{
         alert('muchas gracias Felicitaciones')
     }   
-    agrega();
+   
 }
-agrega()
-   function agrega(){
-   personas.push(newPersona);
-   console.log(personas);
-   }
-    
+function verTodosLosClientes(personas){
+    console.log(personas)
+}
 
+function verClientesFiltrados(personas)
+{
+    const newArray = personas.filter(item => item.monto > 20000 );
+    console.log(newArray)
+}
